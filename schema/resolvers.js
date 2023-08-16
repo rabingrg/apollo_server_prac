@@ -8,6 +8,9 @@ export const resolvers = {
         },
         authors(){
             return Authors
+        },
+        game(_,args){
+            return Games.find((gam)=>gam.id === args.id)
         }
         }
 }
