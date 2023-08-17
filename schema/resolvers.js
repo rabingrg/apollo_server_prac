@@ -28,6 +28,7 @@ export const resolvers = {
         newlyAddedData: Games,
       };
     },
+
     addAuthor(_, args) {
       const newAuthor = {
         ...args.auth,
@@ -40,13 +41,23 @@ export const resolvers = {
         newlyAddedData: Authors,
       };
     },
-    updateGame(_,args){
-        const gameIndex = Games.findIndex((g)=>g.id===args.id)
-        if(gameIndex !== -1){
-            Games[gameIndex]= {...Games[gameIndex],...args.upGame}
-            return Games[gameIndex]
-        }
-        return null;
+
+    updateGame(_, args) {
+      const gameIndex = Games.findIndex((g) => g.id === args.id);
+      if (gameIndex !== -1) {
+        Games[gameIndex] = { ...Games[gameIndex], ...args.upGame };
+        return Games[gameIndex];
+      }
+      return null;
+    },
+
+    updateAuthor(_, args) {
+      const AuthIndex = Authors.findIndex((auth) => auth.id === args.id);
+      if (AuthIndex !== -1) {
+        Authors[AuthIndex] = { ...Authors[AuthIndex], ...args.upAuth };
+        return Authors[AuthIndex];
+      }
+      return null;
     },
 
     deleteGame(_, args) {

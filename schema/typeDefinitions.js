@@ -59,6 +59,7 @@ type CreationAuthResponse{
     addGame(game:GameInput!):CreationGameResponse
     addAuthor(auth:AuthorInput!):CreationAuthResponse
     updateGame(id:ID!,upGame:UpdateGameInput!):Game
+    updateAuthor(id:ID!,upAuth:AuthorInput!):Author
     deleteGame(id:ID!):DeleteGameResponse
     deleteAuthor(id:ID!):DeleteAuthoreResponse
   }
