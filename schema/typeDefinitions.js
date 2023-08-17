@@ -22,6 +22,11 @@ type DeleteAuthoreResponse {
   updatedAuthors: [Author]
 }
 
+input GameInput{
+  title:String!
+  platform:[String!]!
+}
+
   type Query {
     games: [Game]
     game(id:ID!):Game
@@ -30,6 +35,7 @@ type DeleteAuthoreResponse {
   }
 
   type Mutation {
+    addGame(game:GameInput!):[Game]
     deleteGame(id:ID!):DeleteGameResponse
     deleteAuthor(id:ID!):DeleteAuthoreResponse
   }

@@ -30,11 +30,18 @@ export const resolvers = {
         };
       }
     },
-    deleteAuthor(_,args){
-        const updatedAuthors = Authors?.filter((auth)=>auth.id !== args.id)
-        return { success: true, message: "successfully deleted", updatedAuthors };
-
-    }
+    deleteAuthor(_, args) {
+      const updatedAuthors = Authors?.filter((auth) => auth.id !== args.id);
+      return { success: true, message: "successfully deleted", updatedAuthors };
+    },
+    addGame(_, args) {
+      const newGame = {
+        ...args.game,
+        id: Math.floor(Math.random() * 10000).toString(),
+      };
+      Games.push(newGame);
+      return Games;
+    },
   },
 };
 
