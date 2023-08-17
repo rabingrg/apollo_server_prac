@@ -1,4 +1,3 @@
-// import AllData from "../AllData.js"
 import { Games, Authors } from "../_db.js";
 
 export const resolvers = {
@@ -41,6 +40,15 @@ export const resolvers = {
         newlyAddedData: Authors,
       };
     },
+    updateGame(_,args){
+        const gameIndex = Games.findIndex((g)=>g.id===args.id)
+        if(gameIndex !== -1){
+            Games[gameIndex]= {...Games[gameIndex],...args.upGame}
+            return Games[gameIndex]
+        }
+        return null;
+    },
+
     deleteGame(_, args) {
       try {
         const updatedGames = Games?.filter((game) => {

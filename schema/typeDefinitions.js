@@ -27,6 +27,11 @@ input GameInput{
   platform:[String!]!
 }
 
+input UpdateGameInput{
+  title:String
+  platform:[String]
+}
+
 input AuthorInput{
   name:String!
   verified:Boolean!
@@ -53,6 +58,7 @@ type CreationAuthResponse{
   type Mutation {
     addGame(game:GameInput!):CreationGameResponse
     addAuthor(auth:AuthorInput!):CreationAuthResponse
+    updateGame(id:ID!,upGame:UpdateGameInput!):Game
     deleteGame(id:ID!):DeleteGameResponse
     deleteAuthor(id:ID!):DeleteAuthoreResponse
   }
