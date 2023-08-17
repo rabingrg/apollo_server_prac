@@ -10,12 +10,28 @@ export const typeDefs = `#graphql
     name: String!
     verified: Boolean!
   }
+  type DeleteGameResponse {
+  success: Boolean!
+  message: String!
+  updatedGames: [Game]
+}
+
+type DeleteAuthoreResponse {
+  success: Boolean!
+  message: String!
+  updatedAuthors: [Author]
+}
 
   type Query {
     games: [Game]
     game(id:ID!):Game
     authors: [Author]
     author(id:ID!):Author
+  }
+
+  type Mutation {
+    deleteGame(id:ID!):DeleteGameResponse
+    deleteAuthor(id:ID!):DeleteAuthoreResponse
   }
 
 `;

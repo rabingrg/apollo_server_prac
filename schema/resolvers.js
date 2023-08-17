@@ -16,6 +16,26 @@ export const resolvers = {
       return Authors.find((auth) => auth.id === args.id);
     },
   },
+  Mutation: {
+    deleteGame(_, args) {
+      try {
+        const updatedGames = Games?.filter((game) => {
+          return game.id !== args.id;
+        });
+        return { success: true, message: "successfully deleted", updatedGames };
+      } catch (err) {
+        return {
+          success: false,
+          message: "error on deleting",
+        };
+      }
+    },
+    deleteAuthor(_,args){
+        const updatedAuthors = Authors?.filter((auth)=>auth.id !== args.id)
+        return { success: true, message: "successfully deleted", updatedAuthors };
+
+    }
+  },
 };
 
 // export default resolvers;
