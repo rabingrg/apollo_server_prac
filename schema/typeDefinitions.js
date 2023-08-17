@@ -27,6 +27,22 @@ input GameInput{
   platform:[String!]!
 }
 
+input AuthorInput{
+  name:String!
+  verified:Boolean!
+}
+
+type CreationGameResponse{
+  success: Boolean!
+  message: String!
+  newlyAddedData:[Game!]!
+}
+
+type CreationAuthResponse{
+  success: Boolean!
+  message: String!
+  newlyAddedData:[Author!]!
+}
   type Query {
     games: [Game]
     game(id:ID!):Game
@@ -35,7 +51,8 @@ input GameInput{
   }
 
   type Mutation {
-    addGame(game:GameInput!):[Game]
+    addGame(game:GameInput!):CreationGameResponse
+    addAuthor(auth:AuthorInput!):CreationAuthResponse
     deleteGame(id:ID!):DeleteGameResponse
     deleteAuthor(id:ID!):DeleteAuthoreResponse
   }
